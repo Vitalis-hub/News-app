@@ -1,0 +1,66 @@
+{% extends 'front/home.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block headblock %}
+  <title>{{site.name}} | About</title>
+{% endblock %}
+{% block mainblock %}
+
+  
+<div class="container">
+
+  <div class="row content">
+
+    <div class="pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
+      <p>
+        About Us
+      </p>
+    
+      <p class="font-italic">
+        {{site.abouttxt | safe}}
+      </p>
+
+      <div class = "container">
+        <div class="how2 how2-cl4 flex-s-c">
+          <h3 class = "f1-m-2 cl3 tab01-title">
+            Popular Post
+          </h3>
+        </div>
+        {% for pop in popnews2 %}
+        <li class= "flex-wr-sb-s p-b-30">
+          <a href= "{%url 'news_detail' word=pop.name %}" class="size-w-10 wrap-pic-w hov1 trans-03">
+            <img style = "display: inline-block; width:100px; height: 100px" src="{{pop.picurl}}" alt="IMG">
+          </a>
+
+          <div class="size-w-11">
+            <h6 class="p-b-4">
+              <a href="{%url 'news_detail' word=pop.name %}" class="f1-s-5 cl3 hov-cl10 trans-03">
+                {{pop.name}}
+              </a>
+            </h6>
+
+            <span class="cl0 txt-center p-b-24">
+              <a href="#" class ="f1-3-6 hov-cl10 trans03">
+                {{pop.catname}}
+              </a>
+              <span class ="f1-s-3 m-rl-3">
+                -
+              </span>
+
+              <span class = "f1-s-5">
+                {{pop.date}}
+              </span>
+            </span>
+          </div>
+        </li>
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</div>
+  
+{% endblock %}

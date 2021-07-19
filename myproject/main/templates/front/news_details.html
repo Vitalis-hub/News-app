@@ -1,0 +1,90 @@
+{% extends 'front/master.html' %}
+
+{% load static %}
+
+{% block headblock %}
+<title>{{site.name}} | News Detail</title>
+{% endblock %}
+
+
+{% block mainblock %}
+{% for i in shownewsapp %}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>News Details</h2>
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>News Details</li>
+        </ol>
+      </div>
+
+    </div>
+  </section><!-- End Breadcrumbs -->
+  <br>
+  <!-- ======= Portfolio Details Section ======= -->
+  <section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+      <div class="portfolio-details-container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="owl-carousel portfolio-details-carousel">
+          <img src="{{i.picurl}}" class="img-fluid" alt="">
+        </div>
+        <br>
+
+        <div class="portfolio-info">
+          <h3>News information</h3>
+          <a href = "">{{i.catname}}</a>
+          <ul>
+            <img style = "display: inline-block; width:350px; height: 300px" src="{{i.picurl}}" class="img-fluid" alt="">
+            <l1><strong>Name: </strong>{{i.name}}</l1>
+            <li><strong>Writer: </strong>{{i.writer}}</li>
+            <li><strong>Category</strong>: Web design</li>
+            <li><strong>Headlines</strong>:{{i.short_txt}}</li>
+            <li><strong>Date: </strong>{{i.date}}</li>
+          </ul>
+
+          <ul class ="p-t-35">
+            {% for p in cat %}
+
+            {% if p.count != 0 %}
+            <li class = "how-bor3 p-rl-4">
+              <a href="#" class ="di-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
+                {{p.name}} ({{p.count}})
+              </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div>
+      <br>
+      <div class="portfolio-description">
+        <h2>Full coverage</h2>
+        <p>
+          {{i.body_txt| safe}}
+        </p>
+
+      <!-- Tag -->
+      <div>
+        <div class="how2 how2-cl4 flex-s-c m-b-30">
+          <h3 class = "f1=m-2 cl3 tab01-title">
+            Tags
+          </h3>
+        </div>
+
+        <div class="flex-wr-s-s m-rl--5">
+          {% for tagname in tag %}
+          <a href = "#" class = "flex-c-c size-h-2 bo-1-red-20 bocl12 f1-s-1 cl8 hov-">{{tagname}}</a>
+          {% endfor %}
+      </div>
+      </div>
+  </section><!-- End Portfolio Details Section -->
+
+{% endfor %}
+{% endblock %}
