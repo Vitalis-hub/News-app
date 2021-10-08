@@ -1,12 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Main
 from newsapp.models import Newsapp
+<<<<<<< HEAD
 from newsletter.models import Newsletter
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 from cat.models import Cat
 from subcat.models import SubCat
 from django.contrib.auth import authenticate, login, logout
 from django.core.files.storage import FileSystemStorage
 from trending.models import Trending
+<<<<<<< HEAD
 from django.contrib.auth.models import User, Group, Permission
 from manager.models import Manager
 import random
@@ -36,15 +40,28 @@ def home(request):
     if not request.user.is_authenticated:
         return redirect('mylogin')
     #login check end
+=======
+from django.contrib.auth.models import User
+import random
+from random import randint
+
+# Create your views here.
+
+def home(request):
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
     #check under post view
     #sitename = 'DjangoProject | Home'
     site = Main.objects.get(pk=1)
+<<<<<<< HEAD
     newsapp = Newsapp.objects.filter().order_by('-pk')
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     sitename = site.name + " | Home"
     newsapp = Newsapp.objects.all().order_by('-pk')
     cat = Cat.objects.all()
     subcat = SubCat.objects.all()
+<<<<<<< HEAD
     lastnews = Newsapp.objects.filter(act=1).order_by('-pk')[:3]
     popnews = Newsapp.objects.filter(act=1).order_by('-show')
     popnews2 = Newsapp.objects.filter(act=1).order_by('-show')[:3]
@@ -83,15 +100,30 @@ def home(request):
     # print(soup.title.string)
     '''
     return render(request, 'front/home.html', {'site': site, 'news':newsapp, 'cat':cat, 'subcat': subcat, 'lastnews': lastnews, 'popnews': popnews, 'popnews2':popnews2, 'trending': trending, 'lastnews2':lastnews2})  #open the home page in html
+=======
+    lastnews = Newsapp.objects.all().order_by('-pk')[:3]
+    popnews = Newsapp.objects.all().order_by('-show')
+    popnews2 = Newsapp.objects.all().order_by('-show')[:3]
+    trending = Trending.objects.all().order_by('-pk')[:5]
+
+    #get only top 5 trending (random system to extract record from project)
+    random_object = Trending.objects.all()[randint(0, len(trending)-1)]
+    print(random_object)
+
+    return render(request, 'front/home.html', {'site': site, 'news':newsapp, 'cat':cat, 'subcat': subcat, 'lastnews': lastnews, 'popnews': popnews, 'popnews2':popnews2, 'trending': trending})  #open the home page in html
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
 
 def inner_page(request):
 
+<<<<<<< HEAD
     # login check start
     if not request.user.is_authenticated:
         return redirect('mylogin')
     #login check end
 
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     site = Main.objects.get(pk=1)
     sitename = site.name + " | Home"
     newsapp = Newsapp.objects.all().order_by('-pk')
@@ -111,6 +143,7 @@ def panel(request):
     if not request.user.is_authenticated :
         return  redirect('mylogin')
     #login check end
+<<<<<<< HEAD
 
     perm = 0
     perms = Permission.objects.filter(user=request.user)
@@ -134,12 +167,16 @@ def panel(request):
     return render(request, 'back/home.html', {})
     
     
+=======
+    return render(request, 'back/home.html')
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
 
 def mylogin(request):
     if request.method == 'POST':
 
         utxt = request.POST.get('username')
+<<<<<<< HEAD
         print("utxt", utxt)
         ptxt = request.POST.get('password')
         print(ptxt)
@@ -147,6 +184,13 @@ def mylogin(request):
         if utxt != "" and ptxt != "":
             user = authenticate(username=utxt, password=ptxt)
             print(user)
+=======
+        ptxt = request.POST.get('password')
+
+        if utxt != "" and ptxt != "":
+            user = authenticate(username=utxt, password=ptxt)
+
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
             if user != None:
                 login(request, user)
                 return redirect('panel')
@@ -154,6 +198,7 @@ def mylogin(request):
 
     return render(request, 'front/login.html')
 
+<<<<<<< HEAD
 def register(request):
 
     if request.method == 'POST':
@@ -217,6 +262,9 @@ def register(request):
     return render(request, 'front/register.html')
 
 def mylogout(request):
+=======
+def mylogout(reuest):
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
     logout(request)
 
@@ -229,6 +277,7 @@ def site_setting(request):
         return redirect('mylogin')
     #login check end
 
+<<<<<<< HEAD
     perm = 0
     for i in request.user.groups.all():
         if i.name == 'masteruser': perm = 1
@@ -237,6 +286,8 @@ def site_setting(request):
         return render(request, "back/error.html", {'error': error})
 
 
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -246,8 +297,11 @@ def site_setting(request):
         yt = request.POST.get('yt')
         link = request.POST.get('link')
         txt = request.POST.get('txt')
+<<<<<<< HEAD
         seo_txt = request.POST.get('seotxt')
         seo_keywords = request.POST.get('seokeyword')
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
         if fb == "": fb = "#"
         if tw == "": tw = "#"
@@ -294,9 +348,12 @@ def site_setting(request):
         b.yt = yt
         b.link = link
         b.about = txt
+<<<<<<< HEAD
 
         b.seo_txt = seo_txt
         b.seo_keywords = seo_keywords
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
         if picurl != "-": b.picurl = picurl
         if picname != "-": b.picname = picname
         if picurl2 != "-": b.picurl2 = picurl2
@@ -306,7 +363,11 @@ def site_setting(request):
 
 
         
+<<<<<<< HEAD
     site = Main.objects.get(pk=1)
+=======
+    site = Main.objects.get(pk=2)
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
     return render(request, 'back/setting.html', {'site': site})
 
@@ -317,6 +378,7 @@ def about_setting(request):
         return redirect('mylogin')
     #login check end
 
+<<<<<<< HEAD
     perm = 0
     for i in request.user.groups.all():
         if i.name == 'masteruser': perm = 1
@@ -325,6 +387,8 @@ def about_setting(request):
         return render(request, "back/error.html", {'error': error})
 
 
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     if request.method == 'POST':
         txt = request.POST.get('txt')
 
@@ -361,6 +425,7 @@ def change_pass(request):
         return redirect('mylogin')
     #login check end
 
+<<<<<<< HEAD
     if request.method == 'POST':
 
         oldpass = request.POST.get("oldpass")
@@ -441,3 +506,6 @@ def show_data(request):
     count = Newsletter.objects.filter(status=1).count()
     data = {'Count': count}
     return JsonResponse(data)
+=======
+    return render(request, 'back/change_pass.html')
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c

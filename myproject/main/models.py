@@ -17,8 +17,11 @@ class Main(models.Model):
     tw = models.CharField(default='-', max_length=30)
     ig = models.CharField(default='-', max_length=30)
     tell = models.CharField(default='-', max_length=30)
+<<<<<<< HEAD
     seo_txt = models.CharField(default='-', max_length=200)
     seo_keywords = models.TextField(default='-', max_length=30)
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     link = models.CharField(default='-', max_length=30)
     set_name = models.CharField(default='-', max_length = 30)
 

@@ -6,12 +6,17 @@ import datetime
 from subcat.models import SubCat
 from cat.models import Cat
 from trending.models import Trending
+<<<<<<< HEAD
 import random
 from comment.models import Comment
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from itertools import chain
 
 mysearch = ''
+=======
+# Create your views here.
+
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 def news_detail(request,word):
 
     site = Main.objects.get(pk=1)
@@ -40,6 +45,7 @@ def news_detail(request,word):
 
     except:
         print("Can't Add Show")
+<<<<<<< HEAD
     
     code = Newsapp.objects.get(name=word).pk
     comment = Comment.objects.filter(news_id=code).order_by('-pk')[:3]
@@ -104,16 +110,31 @@ def news_list(request):
         except PageNotAnInteger:
             news = paginator.page(1)
     
+=======
+
+    return render(request, 'front/news_details.html', { 'site': site, 'news':newsapp, 'cat':cat, 'subcat': subcat, 'lastnews': lastnews, 'shownewsapp': shownewsapp, 'popnews':popnews, 'popnews2':popnews2, 'tag': tag, 'trending': trending})  #open the home page in html
+
+def news_list(request):
+
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     # login check start
     if not request.user.is_authenticated :
         return  redirect('mylogin')
     #login check end
+<<<<<<< HEAD
+=======
+
+    news = Newsapp.objects.all()
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     
 
     return render(request, 'back/news_list.html', {'news': news})
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 def news_add(request):
 
     # login check start
@@ -143,6 +164,7 @@ def news_add(request):
     today = str(year) + "/" + str(month) + "/" + str(day)
     time = str(now.hour) + ":" + str(now.minute)
 
+<<<<<<< HEAD
     date = str(year) + str(month) + str(day)
     randint = str(random.randint(1000, 9999))
     rand = date + randint
@@ -153,6 +175,8 @@ def news_add(request):
         rand = date + randint
         rand = int(rand)
 
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     cat = SubCat.objects.all()
     print("--------------------------------------")
     
@@ -185,7 +209,11 @@ def news_add(request):
                     newsname = SubCat.objects.get(pk = newsid).catname
                     ocatid = SubCat.objects.get(pk=newsid).catid
 
+<<<<<<< HEAD
                     b = Newsapp(name=newstitle, short_txt=newstxtshort, body_txt=newstxt, date=today, picname = filename, picurl=url, writer=request.user, catname=newsname, catid=newsid, show=0, time=time, ocatid=ocatid, tag=tag, rand =rand)
+=======
+                    b = Newsapp(name=newstitle, short_txt=newstxtshort, body_txt=newstxt, date=today, picname = filename, picurl=url, writer='-', catname=newsname, catid=newsid, show=0, time=time, ocatid=ocatid, tag=tag)
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
                     b.save()
 
                     count = len(Newsapp.objects.filter(ocatid=ocatid))
@@ -220,6 +248,7 @@ def news_delete(request, pk):
         return  redirect('mylogin')
     #login check end
 
+<<<<<<< HEAD
     perm = 0
     for i in request.user.groups.all():
         if i.name == 'masteruser': perm = 1
@@ -229,6 +258,8 @@ def news_delete(request, pk):
            error = "Access Denied"
            return render(request, 'back/error.html', {'error': error})
 
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     try:
         b = Newsapp.objects.get(pk=pk)
 
@@ -251,11 +282,16 @@ def news_delete(request, pk):
     return redirect("news_list")
 
 def news_edit(request, pk):
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     # login check start
     if not request.user.is_authenticated :
         return  redirect('mylogin')
     #login check end
+<<<<<<< HEAD
 
     perm = 0
     for i in request.user.groups.all():
@@ -266,6 +302,8 @@ def news_edit(request, pk):
             error = "Access Denied"
             return render(request, 'back/error.html', {'error': error})
 
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     
     if len(Newsapp.objects.filter(pk=pk)) == 0:
         error = "News Not Found"
@@ -340,11 +378,15 @@ def news_edit(request, pk):
             b.catname = newsname
             b.catid = newsid
             b.tag = tag
+<<<<<<< HEAD
             b.act = 0
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
             b.save()
             return redirect('news_list')
 
+<<<<<<< HEAD
     return render(request, 'back/news_edit.html', {'pk': pk, 'news': news, 'cat': cat})
 
 def news_publish(request, pk):
@@ -567,3 +609,6 @@ def all_news_search(request):
 b = Newsapp.objects.filter(date__gte='2019/01/01')
 b = Newsapp.objects.filter(date__lte='2019/01/01')
 
+=======
+    return render(request, 'back/news_edit.html', {'pk': pk, 'news': news, 'cat': cat})
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c

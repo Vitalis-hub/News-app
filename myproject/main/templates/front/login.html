@@ -32,11 +32,16 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
+<<<<<<< HEAD
     <a href="{%static 'front/login.html' %}"><b>my login</b></a>
+=======
+    <a href="login.html"><b>my login</b></a>
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
+<<<<<<< HEAD
     <form action="{%url 'mylogin' %}" method="POST">
       {% csrf_token %}
       <div class="form-group has-feedback">
@@ -45,6 +50,17 @@
       </div>
       <div class="form-group has-feedback">
         <input type="password" id="password" value = "password" name= "password" class="form-control" placeholder="Password">
+=======
+
+    <form action="{%url 'mylogin' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group has-feedback">
+        <input type="text" id="username" name= "username" class="form-control" placeholder="Username">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" id="password" name= "password" class="form-control" placeholder="Password">
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -73,7 +89,11 @@
     <!-- /.social-auth-links -->
 
     <a href="#">I forgot my password</a><br>
+<<<<<<< HEAD
     <a href="{%url 'register' %}" class="text-center">Register a new membership</a>
+=======
+    <a href="register.html" class="text-center">Register a new membership</a>
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
   </div>
   <!-- /.login-box-body -->

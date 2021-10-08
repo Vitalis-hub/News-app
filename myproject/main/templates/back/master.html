@@ -1,9 +1,13 @@
 {% load static %}
+<<<<<<< HEAD
 {% load extera_auth %}
 
 {% if user.is_authenticated %}
 <!DOCTYPE html>
 <meta charset="UTF-8">
+=======
+<!DOCTYPE html>
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 <html>
 <head>
   <meta charset="utf-8">
@@ -56,7 +60,11 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>PL</span>
       <!-- logo for regular state and mobile devices -->
+<<<<<<< HEAD
       <span class="logo-lg"><b>{{request.user}} Panel</b></span>
+=======
+      <span class="logo-lg"><b>AdminPanel</b></span>
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -303,7 +311,11 @@
           <img src="{%static 'back/dist/img/default.PNG' %}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
+<<<<<<< HEAD
           <p>{{request.user}}</p>
+=======
+          <p>Admin</p>
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
         </div>
       </div>
       <!-- search form -->
@@ -316,6 +328,7 @@
               </span>
         </div>
       </form>
+<<<<<<< HEAD
 
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -331,6 +344,17 @@
         <li class="header">SITE SETTINGS</li>
 
         {%if request.user|has_group:'masteruser'%}
+=======
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="active treeview">
+            <li class="active"><a href="/panel"><i class="fa fa-dashboard"></i><span class="">Dashboard</span></a></li>
+        </li>
+        <li class="header">SITE SETTINGS</li>
+
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
         <li class="active treeview">
           <li class="active"><a href="/panel/setting/"><i class="fa fa-th"></i><span class="">Setting</span></a></li>
         </li>
@@ -343,6 +367,7 @@
           <li class="active"><a href="/panel/contactform/"><i class="fa fa-th"></i><span class="">About Settings</span></a></li>
         </li>
 
+<<<<<<< HEAD
         <li class="active treeview">
           <li class="active"><a href="/comment/list/"><i class="fa fa-th"></i><span class="">Comments</span></a></li>
         </li>
@@ -370,6 +395,10 @@
 
         <li class="header">News Section</li>
         {%if request.user|has_group:'masteruser'%}
+=======
+      <li class="header">News Section</li>
+
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
         <li class="active treeview">
           <a href="#">
             <i class="fa fa-th"></i> <span>Category</span>
@@ -377,7 +406,11 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+<<<<<<< HEAD
          
+=======
+          
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
           <ul class="treeview-menu">
             <li class="active"><a href="/panel/category/add"><i class=""></i>Add Category</a></li>
             <li class="active"><a href="/panel/category/list"><i class=""></i>Categories List</a></li>
@@ -398,6 +431,7 @@
         </li>
 
         <li class="active treeview">
+<<<<<<< HEAD
           <a href="#">
             <i class="fa fa-th"></i> <span>Newsletter</span>
             <span class="pull-right-container">
@@ -411,6 +445,8 @@
         </li>
         {% endif %}
         <li class="active treeview">
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
             <a href="#">
               <i class="fa fa-th"></i> <span>News</span>
               <span class="pull-right-container">
@@ -422,12 +458,18 @@
               <li class="active"><a href="/panel/news/list/"><i class=""></i>News List</a></li>
             </ul>
           </li>
+<<<<<<< HEAD
           {%if request.user|has_group:'masteruser'%}
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
           <li class="active treeview">
             <li class="active"><a href="/panel/trending/"><i class="fa fa-th"></i><span class="">Trending</span></a></li>
           </li>
+<<<<<<< HEAD
           {% endif %}
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
           
         <li class="treeview">
           <a href="#">
@@ -736,4 +778,7 @@
 {% endblock %}
 </body>
 </html>
+<<<<<<< HEAD
 {% endif %}
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c

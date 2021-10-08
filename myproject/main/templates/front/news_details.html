@@ -1,6 +1,7 @@
 {% extends 'front/master.html' %}
 
 {% load static %}
+<<<<<<< HEAD
 {% load qr_code %}
 
 {% block headblock %}
@@ -9,6 +10,11 @@
 {% endfor %}
 <meta name="description" name="description" content="{{site.seo_txt}}">
 <meta name="keywords" name="keywords" content="{{site.seo_keywords}}">
+=======
+
+{% block headblock %}
+<title>{{site.name}} | News Detail</title>
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 {% endblock %}
 
 
@@ -40,7 +46,11 @@
           <img src="{{i.picurl}}" class="img-fluid" alt="">
         </div>
         <br>
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
         <div class="portfolio-info">
           <h3>News information</h3>
           <a href = "">{{i.catname}}</a>
@@ -75,6 +85,7 @@
           {{i.body_txt| safe}}
         </p>
 
+<<<<<<< HEAD
       <!-- work on a tag side bar-->
       <!-- Tag -->
       <!-- Sidebar -->
@@ -235,6 +246,22 @@
 
 
 
+=======
+      <!-- Tag -->
+      <div>
+        <div class="how2 how2-cl4 flex-s-c m-b-30">
+          <h3 class = "f1=m-2 cl3 tab01-title">
+            Tags
+          </h3>
+        </div>
+
+        <div class="flex-wr-s-s m-rl--5">
+          {% for tagname in tag %}
+          <a href = "#" class = "flex-c-c size-h-2 bo-1-red-20 bocl12 f1-s-1 cl8 hov-">{{tagname}}</a>
+          {% endfor %}
+      </div>
+      </div>
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
   </section><!-- End Portfolio Details Section -->
 
 {% endfor %}

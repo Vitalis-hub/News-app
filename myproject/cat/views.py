@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cat
+<<<<<<< HEAD
 import csv
 from django.http import HttpResponse
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
 def cat_list(request):
 
@@ -39,6 +42,7 @@ def cat_add(request):
         b.save()
         return redirect('cat_list')
 
+<<<<<<< HEAD
     return render(request, 'back/cat_add.html')
 
 def export_cat_csv(request):
@@ -82,3 +86,6 @@ def import_cat_csv(rquest):
             except:
                 print('notSaved')
     return redirect('cat_list')
+=======
+    return render(request, 'back/cat_add.html')
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c

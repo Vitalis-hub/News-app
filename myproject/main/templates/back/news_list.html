@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 {% extends 'back/master.html' %}
 {% load static %}
 
@@ -42,7 +46,10 @@
             <th>Date & Time</th>
             <th>Category</th>
             <th>Writer</th>
+<<<<<<< HEAD
             <th>Status</th>
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
             <th>views</th>
             <th class="text-center">Actions</th>
           </tr>
@@ -50,32 +57,43 @@
           <tbody>
            {% for cc in news %}
           <tr>
+<<<<<<< HEAD
             <td class="text-center">{{cc.rand}}</td>
+=======
+            <td class="text-center">{{cc.pk}}</td>
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
             <td class ="text-center"><img style = "display: inline-block; width:50px; height: 50px" src = "{{cc.picurl}}" alt="avatar"></td>
             <td>{{cc.name}}</td>
             <td>{{cc.date}} | {{cc.time}}</td>
             <td>{{cc.catname}}</td>
             <td>{{cc.writer}}</td>
+<<<<<<< HEAD
             {% if cc.act  == 0 %}
             <td>Pending</td>
             {% elif cc.act == 1 %}
             <td>Confirmed</td>
             {% endif %}
             <td>{{cc.act}}</td>
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
             <td>{{cc.show}}</td>
             <td class="text-center">
                 <div class="btn-group">
                     <a href="{%url 'news_edit' pk=cc.pk %}" data-toogle="tooltip" title="Edit" class = "btn bt-xs btn-default"><i class="fa fa-pencil"> Edit</i></a>
                     <a href="{%url 'news_delete' pk=cc.pk %}" data-toogle="tooltip" title="Delete" class = "btn bt-xs btn-default"><i class="fa fa-times"> Delete</i></a>
+<<<<<<< HEAD
                     {% if perms.main.masteruser %}
                     <a href="{%url 'news_publish' pk=cc.pk %}" data-toogle="tooltip" title="Edit" class = "btn bt-xs btn-default"><i class="fa fa-pencil"> Publish</i></a>
                     {% endif %}
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
                 </div>
             </td>
           </tr>
           {% endfor %}
           </tfoot>
         </table>
+<<<<<<< HEAD
         Page {{news.number}} From {{news.paginator.num_pages}}
         <br/><br/>
         {% if news.has_previous %}
@@ -96,6 +114,10 @@
       </div>
       <!-- /.box-body -->
       
+=======
+      </div>
+      <!-- /.box-body -->
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
     </div>
     <!-- /.box -->
 

@@ -14,6 +14,11 @@ from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -23,7 +28,11 @@ SECRET_KEY = 'django-insecure-y08qn=c56p3ysoa47*@iu_i4$u%bf4hwk$*4!+9p3u5ox-i+zp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['127.0.0.1']
+=======
+ALLOWED_HOSTS = []
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
 
 # Application definition
@@ -41,6 +50,7 @@ INSTALLED_APPS = [
     'subcat',
     'contactform',
     'trending',
+<<<<<<< HEAD
     'manager',
     'newsletter',
     'django.contrib.humanize',
@@ -50,6 +60,8 @@ INSTALLED_APPS = [
     'qr_code',
     'django.contrib.sitemaps',
     'rest_framework',
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 ]
 
 MIDDLEWARE = [
@@ -140,6 +152,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+<<<<<<< HEAD
 
 CRONJOBS = [
     ('*/10 * * 3 *', 'main.cron.my_job')
@@ -173,3 +186,5 @@ SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_AGE = 3600
 SESSION_SAVE_EVERY_REQUEST = True
 
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c

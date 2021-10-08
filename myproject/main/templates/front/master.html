@@ -38,6 +38,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+<<<<<<< HEAD
 
   <script>
   var counter = 0;
@@ -54,6 +55,8 @@
   setInterval(worker, 60000)
   </script>
 
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 </head>
 
 <body>
@@ -85,6 +88,7 @@
             </li>
             <br></br>
             <li class="active"><a href="/">Home</a></li>
+<<<<<<< HEAD
             <li><a href="/news/all/">All News</a></li>
             <li><a href="/inner_page">About</a></li>
             <li><a href = "/login"> Log in / Sign up</a></li>
@@ -98,6 +102,20 @@
                 <div class="nav flex-column nav-pills" role="tablist">
                   <a class = "nav-link active" data-toogle="pull" href="#news-0" role="tab">All</a>
              
+=======
+            <li><a href="/inner_page">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li class="drop-down"><a href="">Drop Down</a>
+              <ul>
+                {% for gg in cat %}
+            {% if gg.count != 0 %}
+            <li class = "drop-down mega-menu-item">
+              <a href="">{{gg.name}}</a>
+              <div class ="sub-mega-menu">
+                <div class="nav flex-column nav-pills" role="tablist">
+                  <a class = "nav-link active" data-toogle="pull" href="#news-0" role="tab">All</a>
+
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
                   {% for subcat in subcat %}
                   {% if subcat.catid == gg.pk %}
                   <a class="nav-link" data-toggle="pill" href="#((subcat.pk))" role = "tab">{{subcat.name}}</a>
@@ -301,7 +319,11 @@
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Join Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+<<<<<<< HEAD
             <form action="{%url 'news_emails' %}" method="post">
+=======
+            <form action="" method="post">
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
           </div>
@@ -318,7 +340,11 @@
             {% for c in cat %}
             {% if c.count != 0 %}  
             <li class = "how-borl p-rl-5 p-rb-10">
+<<<<<<< HEAD
                 <a href= "{%url 'news_all_show' word=c.name %}" class = "f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+=======
+                <a href= "#" class = "f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
                   
                   {{c.name}} ({{c.count}})
                   
@@ -351,6 +377,7 @@
         <a href="{{site.tw}}" class="twitter"><i class="bx bxl-twitter"></i></a>
         <a href="{{site.fb}}" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="{{site.ig}}" class="instagram"><i class="bx bxl-instagram"></i></a>
+<<<<<<< HEAD
         <br/>
         # link to the news feed
         <form action = "{%url 'news_letter' %}" method ="POST">
@@ -361,6 +388,10 @@
       </div>
     </div>
    
+=======
+      </div>
+    </div>
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>

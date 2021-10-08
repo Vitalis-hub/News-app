@@ -18,8 +18,11 @@ class Newsapp(models.Model):
     ocatid= models.IntegerField(default=0)
     show = models.IntegerField(default=0)
     tag = models.TextField(default="")
+<<<<<<< HEAD
     act = models.IntegerField(default=0)
     rand = models.IntegerField(default=0)
+=======
+>>>>>>> 2835b47b2b661218de4bf07d459eab63127e891c
 
 
     def __str__(self):
