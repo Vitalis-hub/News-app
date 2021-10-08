@@ -1,0 +1,155 @@
+ 
+{% extends 'back/master.html' %}
+{% load static %}
+
+{% block headblock %}
+<title>{{site.name}} | All</title>
+
+<script>
+        function Num(x) {
+            if {window.event} {var key = window.event.keycode;}
+            else if(x) {key = x.which;}
+            else {return true;}
+            var keychar= String.fromCharCode(key)
+            keychar.toLowerCase();
+          if(key == (null || 0 || 8 || 13 || 27)) || ('0123456789').indexOf(keychar) > -1 {return }
+          if(key == ("9").indexOf(keychar > -1) {return true;})
+            else {return false;}
+    
+    }
+</script>
+{% endblock %}
+{% block mainblock %}
+
+<section class = "bg0 p-t-60 p-b-40">
+  <div class = "container">
+    <div class="col-sm-6 col-md-6">
+      <form action = "{%url 'all_news_search' %}" method="POST">
+        {% csrf_token %}
+        {% comment %} <input class="bo-1-rad-3 bocl13 size-m-19 f1-s-13 cls plh6 p-rl-18 m-b-20" onkeypress= "return Num(event):" type = "text" name="txt" placeholder = "txt"> {% endcomment %}
+        <input class="bo-1-rad-3 bocl13 size-m-19 f1-s-13 cls plh6 p-rl-18 m-b-20" type = "text" name="txt" placeholder = "txt">
+        
+         <select id ="cat" name="cat" class="select-chosen" data-placeholder="choose a Category..." style="width: 100%">
+            <option value="0">All News</option>
+            {% for i in cat %}
+            <option value="{{i.pk}}">{{i.nam}}</option>
+            {% endfor %}
+         </select>
+
+         <br/><br/>
+         
+         <select id ="from" name="from" class="select-chosen" data-placeholder="choose a Category..." style="width: 100%">
+            <option value="0">From</option>
+            {% for i in f_rom %}
+            <option value="{{i}}">{{i}}</option>
+            {% endfor %}
+         </select>
+          <br/><br/>
+          <select id ="to" name="to" class="select-chosen" data-placeholder="choose a Category..." style="width: 100%">
+            <option value="0">To</option>
+            {% for i in t_o %}
+            {% endfor %}
+         </select>
+         <br/><br/>
+        <button type = "submit" class = "size-a-20 bg1 borad-2 f1-s-12 cl10 hov-btn1 trans p-rl-15 m-t-20">
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- Main content -->
+<section class="content">
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">All News</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <div class='col-m-6 p-rl-1'>
+          <div class="row m-rl--1">
+            {% for ln in allnews %}
+            <div class="col-md-12 p-rl-1 p-6-2">
+              <div class="bg=img size-a-3-how1 pos-relative">
+                <img style = "display: inline-block; width:350px; height: 300px" src="{{ln.picurl}}" class="img-fluid" alt="">
+                <a href= "{%url 'news_detail' word=ln.name %}" class = "dis-block how1-child2 trans-3"></a>
+                <div class-"flex-col-e-s s-full p-rl-25 p-tb-20">
+                  <a href = "" class='dis-block how1-child2 f1-s-2 a0 b0-all -1 boc10 '>
+                    {{ln.catname}}
+                  </a>
+                  <h3 class="how1-child2 m-t-14 m-b-10">
+                    <a href="{%url 'news_detail' word=ln.name %}" class="how-txt1 size-a-6 f1-l-1 hov-cl10">
+                      {{ln.name}}
+                    </a>
+                  </h3>
+                  <span class = "how1-child2">
+                    <span class="f1-s-4 cl11">
+                      {{ln.writer}}
+                    </span>
+                    <span>
+                      -
+                    </span>
+                    <span class="f1-s-3 cl11">
+                      {{ln.date}} | {{ln.time}}
+                    </span>
+                  </span>
+                </div>
+    
+                </div>
+    
+            </div>
+            {% endfor %}
+            Page {{news.number}} From {{news.paginator.num_pages}}
+        <br/><br/>
+        {% if news.has_previous %}
+        <a href="?page={{news.previous_page_number}}" data-toogle="tooltip" title="Previous" class = "btn bt-xs btn-default">Prev</i></a>
+        {% endif %}
+
+        {% for i in news.paginator.page_range %}
+      
+          {% if news.number == i %}
+            <a href="#" onclick = "return false;" data-toogle="tooltip" title="{{Disables}}" class = "btn bt-xs btn-default"> {{i}}</i></a>
+          {% else %}
+            <a href="?page={{i}}" data-toogle="tooltip" title="{{i}}" class = "btn bt-xs btn-default"> {{i}}</i></a>
+          {% endif %}
+        {% endfor %}
+        {% if news.has_next %}
+        <a href="?page={{news.next_page_number}}" data-toogle="tooltip" title="Next" class = "btn bt-xs btn-default"> Next</i></a>
+        {% endif %}
+          </div>
+        </div>
+      </div>
+      <!-- /.box-body -->
+
+      
+    </div>
+    <!-- /.box -->
+
+  </div>
+  <!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+<!-- /.content -->
+  <br/>
+  {% endblock %}
+
+  {% block footerblock %}
+  <script src="{% static 'back/dist/js/demo.js' %}"></script>
+  <!-- page script -->
+  <script>
+    $(function () {
+      $('#example1').DataTable()
+      $('#example2').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      })
+    })
+  </script>
+  {% endblock %}

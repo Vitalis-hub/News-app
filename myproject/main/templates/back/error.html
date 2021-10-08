@@ -1,0 +1,50 @@
+
+{% extends 'back/master.html' %}
+{% load static %}
+
+{% block headblock %}
+
+<script>
+  function goback() {
+    window.history.back();
+  }
+</script>
+{% block mainblock %}
+
+</section>
+<!-- /.sidebar -->
+</aside>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<h1>
+  Error
+  <small>{{error}}</small>
+</h1>
+<button onclick = "goback()">Back</button>
+</section>
+
+
+</div>
+
+  {% endblock %}
+
+  {% block footerblock %}
+  <script src="{% static 'back/dist/js/demo.js' %}"></script>
+  <!-- page script -->
+  <script>
+    $(function () {
+      $('#example1').DataTable()
+      $('#example2').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      })
+    })
+  </script>
+  {% endblock %}

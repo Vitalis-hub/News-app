@@ -1,0 +1,129 @@
+ 
+{% extends 'back/master.html' %}
+{% load static %}
+
+{% block mainblock %}
+
+</section>
+<!-- /.sidebar -->
+</aside>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<h1>
+  Emails List
+  <small>you can add, edit and delete your data</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+  <li class="active">Emails</li>
+  <li><a href="/panel/newsletter/emails/">Emails</a></li>
+</ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Send Email</h3>
+      </div>
+      <form action="{%url 'send_email' %}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+        {% csrf_token %}
+        <!-- /.box-header -->
+         <div class ="form-group">
+              <div class="col-md-12">
+                <textarea type="text" id="txt" name="txt" method="post" class="form-control" >
+              </div>
+          </div>
+
+          <div class = "form-group">
+            <div class = "col-md-12">
+              <button type="submit" class = "bt btn-sm btn-primary">Submit</button>
+            </div>
+          </div>
+      <!-- /.box-body -->
+      </form>
+    </div>
+    <!-- /.box -->
+
+  </div>
+  <!-- /.col -->
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Emails List</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+      <form action="{%url 'check_mychecklist' %}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+        {% csrf_token %}
+        <table id="example2" class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>&nbsp</th>
+            <th>ID</th>
+            <th>Email</th>
+            <th class="text-center">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+           {% for cc in emails %}
+          <tr>
+            <!-- <td><input type="checkbox" name="{{cc.pk}}" id="check"></td> -->
+            <td><input type="checkbox" name="checks[]" value = "{{cc.pk}}"></td>
+            <td class="text-center">{{cc.pk}}</td>
+            <td>{{cc.txt}}</td>
+            <td class="text-center">
+                <div class="btn-group">
+                    
+                    <a href="{%url '{%news_txt_del%}' pk=cc.pk name=1%}" data-toogle="tooltip" title="Delete" class = "btn bt-xs btn-default"><i class="fa fa-times"> Delete</i></a>
+                </div>
+            </td>
+          </tr>
+          {% endfor %}
+          </tfoot>
+        </table>
+        <div class = "form-group">
+            <div class = "col-md-12">
+              <button type="submit" class = "bt btn-sm btn-primary">Submit</button>
+            </div>
+          </div>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+  </div>
+  <!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+<!-- /.content -->
+</div>
+  <br>
+  {% endblock %}
+
+  {% block footerblock %}
+  <script src="{% static 'back/dist/js/demo.js' %}"></script>
+  <!-- page script -->
+  <script>
+    $(function () {
+      $('#example1').DataTable()
+      $('#example2').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      })
+    })
+  </script>
+  {% endblock %}

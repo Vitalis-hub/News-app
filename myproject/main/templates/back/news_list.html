@@ -1,0 +1,128 @@
+ 
+{% extends 'back/master.html' %}
+{% load static %}
+
+{% block mainblock %}
+
+</section>
+<!-- /.sidebar -->
+</aside>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<h1>
+  News List
+  <small>you can add, edit and delete your data</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+  <li class="active">News</li>
+  <li><a href="/panel/news/list/">List</a></li>
+</ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">News List</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table id="example2" class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Date & Time</th>
+            <th>Category</th>
+            <th>Writer</th>
+            <th>Status</th>
+            <th>views</th>
+            <th class="text-center">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+           {% for cc in news %}
+          <tr>
+            <td class="text-center">{{cc.rand}}</td>
+            <td class ="text-center"><img style = "display: inline-block; width:50px; height: 50px" src = "{{cc.picurl}}" alt="avatar"></td>
+            <td>{{cc.name}}</td>
+            <td>{{cc.date}} | {{cc.time}}</td>
+            <td>{{cc.catname}}</td>
+            <td>{{cc.writer}}</td>
+            {% if cc.act  == 0 %}
+            <td>Pending</td>
+            {% elif cc.act == 1 %}
+            <td>Confirmed</td>
+            {% endif %}
+            <td>{{cc.act}}</td>
+            <td>{{cc.show}}</td>
+            <td class="text-center">
+                <div class="btn-group">
+                    <a href="{%url 'news_edit' pk=cc.pk %}" data-toogle="tooltip" title="Edit" class = "btn bt-xs btn-default"><i class="fa fa-pencil"> Edit</i></a>
+                    <a href="{%url 'news_delete' pk=cc.pk %}" data-toogle="tooltip" title="Delete" class = "btn bt-xs btn-default"><i class="fa fa-times"> Delete</i></a>
+                    {% if perms.main.masteruser %}
+                    <a href="{%url 'news_publish' pk=cc.pk %}" data-toogle="tooltip" title="Edit" class = "btn bt-xs btn-default"><i class="fa fa-pencil"> Publish</i></a>
+                    {% endif %}
+                </div>
+            </td>
+          </tr>
+          {% endfor %}
+          </tfoot>
+        </table>
+        Page {{news.number}} From {{news.paginator.num_pages}}
+        <br/><br/>
+        {% if news.has_previous %}
+        <a href="?page={{news.previous_page_number}}" data-toogle="tooltip" title="Previous" class = "btn bt-xs btn-default">Prev</i></a>
+        {% endif %}
+
+        {% for i in news.paginator.page_range %}
+      
+          {% if news.number == i %}
+            <a href="#" onclick = "return false;" data-toogle="tooltip" title="{{Disables}}" class = "btn bt-xs btn-default"> {{i}}</i></a>
+          {% else %}
+            <a href="?page={{i}}" data-toogle="tooltip" title="{{i}}" class = "btn bt-xs btn-default"> {{i}}</i></a>
+          {% endif %}
+        {% endfor %}
+        {% if news.has_next %}
+        <a href="?page={{news.next_page_number}}" data-toogle="tooltip" title="Next" class = "btn bt-xs btn-default"> Next</i></a>
+        {% endif %}
+      </div>
+      <!-- /.box-body -->
+      
+    </div>
+    <!-- /.box -->
+
+  </div>
+  <!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+<!-- /.content -->
+</div>
+  <br>
+  {% endblock %}
+
+  {% block footerblock %}
+  <script src="{% static 'back/dist/js/demo.js' %}"></script>
+  <!-- page script -->
+  <script>
+    $(function () {
+      $('#example1').DataTable()
+      $('#example2').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      })
+    })
+  </script>
+  {% endblock %}

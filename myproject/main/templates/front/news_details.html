@@ -1,0 +1,241 @@
+{% extends 'front/master.html' %}
+
+{% load static %}
+{% load qr_code %}
+
+{% block headblock %}
+{% for i in shownews %}
+<title>{{site.name}} | {{i.name}} </title>
+{% endfor %}
+<meta name="description" name="description" content="{{site.seo_txt}}">
+<meta name="keywords" name="keywords" content="{{site.seo_keywords}}">
+{% endblock %}
+
+
+{% block mainblock %}
+{% for i in shownewsapp %}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>News Details</h2>
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>News Details</li>
+        </ol>
+      </div>
+
+    </div>
+  </section><!-- End Breadcrumbs -->
+  <br>
+  <!-- ======= Portfolio Details Section ======= -->
+  <section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+      <div class="portfolio-details-container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="owl-carousel portfolio-details-carousel">
+          <img src="{{i.picurl}}" class="img-fluid" alt="">
+        </div>
+        <br>
+        
+        <div class="portfolio-info">
+          <h3>News information</h3>
+          <a href = "">{{i.catname}}</a>
+          <ul>
+            <img style = "display: inline-block; width:350px; height: 300px" src="{{i.picurl}}" class="img-fluid" alt="">
+            <l1><strong>Name: </strong>{{i.name}}</l1>
+            <li><strong>Writer: </strong>{{i.writer}}</li>
+            <li><strong>Category</strong>: Web design</li>
+            <li><strong>Headlines</strong>:{{i.short_txt}}</li>
+            <li><strong>Date: </strong>{{i.date}}</li>
+          </ul>
+
+          <ul class ="p-t-35">
+            {% for p in cat %}
+
+            {% if p.count != 0 %}
+            <li class = "how-bor3 p-rl-4">
+              <a href="#" class ="di-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
+                {{p.name}} ({{p.count}})
+              </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+
+      </div>
+      <br>
+      <div class="portfolio-description">
+        <h2>Full coverage</h2>
+        <p>
+          {{i.body_txt| safe}}
+        </p>
+
+      <!-- work on a tag side bar-->
+      <!-- Tag -->
+      <!-- Sidebar -->
+      <div class = "col-md-10 col-lg-4 p-b-30">
+        <div class = "p-l-10 p-rl-0-sr991 p-t-70">
+          <div class="p-b-60">
+            <div class="how2 how2-cl4 flex-s-c m-b-30">
+              <h3 class = "f1=m-2 cl3 tab01-title">
+                Tags
+              </h3>
+            </div>
+    
+            <div class="flex-wr-s-s m-rl--5">
+              {% for tagname in tag %}
+              <a href = "#" class = "flex-c-c size-h-2 bo-1-red-20 bocl12 f1-s-1 cl8 hov-">{{tagname}}</a>
+              {% endfor %}
+          </div>
+    
+        </div>
+      </div>
+
+      {% qr_from_text i.rand size=10 border=6 %}
+      <div>
+        {% if cmcount != 0 %}
+        <div class="how2 how2-cl4 flex-s-c m-b-30">
+          <h3 class = "f1=m-2 cl3 tab01-title">
+            Comments
+          </h3>
+        </div>
+        {% for cc in comment %}
+        <h1> {{cc.name}} | {{cc.date}} & {{cc.time}} </h1>
+        <div class="flex-wr-s-s m-rl--5">
+          {{cm.cm}}
+         </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+      <br/><br/>
+        
+      </div>
+
+      <div class = "col-md-10 col-lg-4 p-b-30">
+        <div class = "p-l-10 p-rl-0-sr991 p-t-70">
+          <div class="p-b-60">
+            <div class="how2 how2-cl4 flex-s-c m-b-30">
+              <h3 class = "f1=m-2 cl3 tab01-title">
+                Tags
+              </h3>
+            </div>
+    
+            <div class="flex-wr-s-s m-rl--5">
+             <div class = "col-md-10 col-lg-4 p-b-30">
+        <div class = "p-l-10 p-rl-0-sr991 p-t-70">
+          <div class="p-b-60">
+            <div class="how2 how2-cl4 flex-s-c m-b-30">
+              <h3 class = "f1=m-2 cl3 tab01-title">
+                QR Code
+              </h3>
+            </div>
+    
+            <div class="flex-wr-s-s m-rl--5">
+              {% qr_from_text link size=20 border=6 %}
+          </div>
+    
+        </div>
+      </div>
+
+      <div>
+        {% if cmcount != 0 %}
+        <div class="how2 how2-cl4 flex-s-c m-b-30">
+          <h3 class = "f1=m-2 cl3 tab01-title">
+            Comments
+          </h3>
+        </div>
+        {% for cc in comment %}
+        <h1> {{cc.name}} | {{cc.date}} & {{cc.time}} </h1>
+        <div class="flex-wr-s-s m-rl--5">
+          {{cm.cm}}
+         </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+      <br/><br/>
+        
+      </div>
+          </div>
+    
+        </div>
+      </div>
+
+      <div>
+        {% if cmcount != 0 %}
+        <div class="how2 how2-cl4 flex-s-c m-b-30">
+          <h3 class = "f1=m-2 cl3 tab01-title">
+            Comments
+          </h3>
+        </div>
+        {% for cc in comment %}
+        <h1> {{cc.name}} | {{cc.date}} & {{cc.time}} </h1>
+        <div class="flex-wr-s-s m-rl--5">
+          {{cm.cm}}
+         </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+      <br/><br/>
+        
+      </div>
+      </div>
+      <a href = "{%url 'news_detail_short' pk=i.rand%}">mysite/urls/{{i.rand}}</a>
+      <br/><br/>
+
+      <h1> Leave a Comment </h1>
+      <br/>
+      {% if user.is_authenticated %}
+      <form action="{%url 'news_cm_add' pk=code %}" method="POST" role="form" class="#">
+          {% csrf_token %}
+          <div class="form-row">
+          <div class="col-md-6 form-group">
+              <input type="text" name="comment" class="form-control" id="comment" placeholder="Comment" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
+              <div class="validate"></div>
+          </div>
+         </div>
+    </form>
+
+    {% else %}
+        <form action="{%url 'contact_add' %}" method="POST" role="form" class="#">
+          {% csrf_token %}
+          <div class="form-row">
+          <div class="col-md-6 form-group">
+              <input type="text" name="name" class="form-control" id="comment" placeholder="comment" data-rule="minlen:4" data-msg="Please enter at least 4 chars" required> 
+              <div class="validate"></div>
+          </div>
+          <div class="col-md-6 form-group">
+              <input type="text" class="form-control" name="name" id="name" placeholder="Name" data-rule="minlen:4" data-msg="Please enter a valid email" required>
+              <div class="validate"></div>
+          </div>
+          <div class="col-md-6 form-group">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="minlen:4" data-msg="Please enter a valid email" required>
+            <div class="validate"></div>
+        </div>
+
+      </div>
+
+        <div class="form-group">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter at least 8 chars of subject" />
+            <div class="validate"></div>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" name="website" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+            <div class="validate"></div>
+        </div>
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Post Comment</button>
+        </div>
+    </form>
+    {% endif %}
+
+
+
+  </section><!-- End Portfolio Details Section -->
+
+{% endfor %}
+{% endblock %}

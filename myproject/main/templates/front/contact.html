@@ -1,0 +1,99 @@
+{% extends 'front/home.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block headblock %}
+  <title>{{site.name}} | Contact</title>
+{% endblock %}
+{% block mainblock %}
+
+<div class="row">
+    
+    <div class="col-lg-6 mt-4">
+      <div class="info">
+        <i class="icofont-envelope"></i>
+        <h4>Email:</h4>
+        <p>info@example.com</p>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="info w-100 mt-4">
+        <i class="icofont-phone"></i>
+        <h4>Call:</h4>
+        <p>Tell: {{site.tell}}</p>
+      </div>
+    </div>
+       
+  </div>
+
+    <form action="{%url 'contact_add' %}" method="POST" role="form" class="#">
+            {% csrf_token %}
+        <div class="form-row">
+            <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validate"></div>
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validate"></div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+            <div class="validate"></div>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+            <div class="validate"></div>
+        </div>
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Send Message</button>
+        </div>
+    </form>
+
+  <div class = "container">
+    <div >
+        <div class="how2 how2-cl4 flex-s-c">
+            <h3 class="f1-m-2 cl3 tab01-title">
+                Popular Post
+            </h3>
+        </div>
+
+        <ul class="p-t-35 row-20 container">
+            {% for pop in popnews2 %}
+            <div class="flex-wr-sb-s m-b-30 col-6">
+                <a href="#" class="size-w-1 wrap-pic-w hov1 trans-03">
+                  <img style = "display: inline-block; width:50px; height: 50px" src="{{pop.picurl}}" alt="IMG">
+                </a>
+
+                <div class="size-w-2 col-6">
+                    <h5 class="p-b-5 ">
+                        <a href="#" class="size-w-1 wrap-pic-w hov1 trans-03">
+                           {{pop.name}}
+                         </a>
+                     </h5>
+
+                    <span class="cl8">
+                        <a href='#' class="f1-s-6 cl8 hov-cl10 trans-03">
+                             {{pop.catname}}
+                        </a>
+
+                         <span class = "f1-s-3 m-rl-3">
+                               -
+                          </span>
+
+                         <span class= "f1-s-3">
+                             {{pop.date}}
+                         </span>
+                    </span>
+                </div>
+            </div
+             {% endfor %}
+        </ul> 
+    </div>
+</div>
+  
+{% endblock %}
